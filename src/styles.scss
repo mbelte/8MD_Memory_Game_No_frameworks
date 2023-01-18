@@ -1,3 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+:root {
+  --c-primary: #032539;
+  --c-secondary: #1C768F;
+  --c-tertiary: #FBF3F2;
+  --c-quaternary: #FA991C;
+}
+
 body {
-  background-color: antiquewhite;
+  background-color: var(--c-primary);
+  color: var(--c-tertiary);
+  font-family: 'Roboto', sans-serif;
+}
+
+.game-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.game-header {
+  display: flex;
+  font-size: 20px;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.game-stats--hidden {
+  visibility: hidden;
+}
+
+.game-stats__moves,
+.game-stats__matches {
+  padding: 5px 0;
+}
+
+.game-stats__moves::before {
+  content: "Moves: ";
+}
+
+.game-stats__matches::before {
+  content: "Matches: ";
+}
+
+.game-timer--hidden {
+  visibility: hidden;
+}
+
+.btn-main {
+  background-color: rgba(var(--c-quaternary), 0.8);
+  border: 1px solid var(--c-quaternary);
+  color: var(--c-tertiary);
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 12px 30px;
+  transition: background-color 0.5s;
+  text-shadow: 4px 4px 5px rgba(0,0,0,0.6);
+
+  &:hover {    
+    background-color: var(--c-quaternary);
+  }
+}
+
+.btn-main--hidden {
+  display: none;
+}
+
+.game-grid {
+  display: grid;
+  gap: 60px;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 30px 0;
+}
+
+
+.game-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.game-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+
+  img {    
+    border-radius: 10px;
+  }
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.game-card.flipped .game-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.game-card__front, .game-card__back {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.game-card__front {
+  background-color: var(--c-secondary);
+  border: 2px solid var(--c-quaternary);
+  color: var(--c-tertiary);
+  cursor: pointer;
+  font-size: 40px;
+}
+
+/* Style the back side */
+.game-card__back {
+  transform: rotateY(180deg);
 }

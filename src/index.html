@@ -6,14 +6,122 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/scripts/css/reset.css">
     <link rel="stylesheet" href="/styles.css">
-    <title>Document</title>
+    <title>Memo Game</title>
 </head>
 <body>
-    <h1>
-        Hello World
-    </h1>
-    <img src="/assets/images/cat.jpeg" alt="" width="300">
+    
+    <div class="game-wrap">
+
+        <div class="game-header">
+            <div class="game-stats">
+                <div class="game-stats__moves js-game-moves">
+                    0
+                </div>
+                <div class="game-stats__matches js-game-matches">
+                    0
+                </div>
+            </div>
+            <div class="game-timer js-game-timer">
+                00:00
+            </div>
+            <div class="btn-holder">
+                <button class="btn-main btn-main--hidden js-game-reset-btn">
+                    Reset
+                </button>
+                <button class="btn-main js-game-start-btn">
+                    Start Game
+                </button>
+            </div>
+        </div>
+
+        <div class="game-grid">
+            <div class="game-card js-game-card" data-card-name="LightSlateGray">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/seed/hw-3/200">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="game-card js-game-card" data-card-name="LightSlateGray">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/seed/hw-3/200">
+                    </div>
+                </div>
+            </div>
+            <div class="game-card js-game-card" data-card-name="OrangeRed">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/seed/hw-5/200">
+                    </div>
+                </div>
+            </div>
+            <div class="game-card js-game-card" data-card-name="OrangeRed">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/seed/hw-5/200">
+                    </div>
+                </div>
+            </div>
+            <div class="game-card js-game-card">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/200">
+                    </div>
+                </div>
+            </div>
+            <div class="game-card js-game-card">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/200">
+                    </div>
+                </div>
+            </div>
+            <div class="game-card js-game-card">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/200">
+                    </div>
+                </div>
+            </div>
+            <div class="game-card js-game-card">
+                <div class="game-card__inner">
+                    <div class="game-card__front">
+                        <span class="game-card__txt">?</span>
+                    </div>
+                    <div class="game-card__back">
+                        <img src="https://picsum.photos/200">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
 
     <script src="/scripts.js"></script>
