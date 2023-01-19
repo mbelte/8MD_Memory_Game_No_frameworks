@@ -18,6 +18,8 @@ const colors = [
     'DarkSlateBlue'
 ]
 
+
+//  selectors object
 const selectors = {
     gameGrid: document.querySelector<HTMLDivElement | null>('.js-game-grid'),
     moves: document.querySelector<HTMLDivElement | null>('.js-game-moves'),
@@ -26,6 +28,8 @@ const selectors = {
     gameBtn: document.querySelector<HTMLButtonElement | null>('.js-game-btn'),
 }
 
+
+//  init state object
 const initState = {
     gameStarted: false,
     totalMatches: 0,
@@ -39,8 +43,11 @@ const initState = {
     gridLength: 8,
 }
 
+
 let state = {...initState}
 
+
+//  picks cards colors from array randomly
 const pickRandomCards = (colors: string[], items: number) => {
     const colorsCopy = [...colors]
     const randomPicks: string[] = []
@@ -55,6 +62,8 @@ const pickRandomCards = (colors: string[], items: number) => {
     return randomPicks
 }
 
+
+//  shuffle selected cards colors
 const shuffleCards = (cards: string[]) => {
     const cardsCopy = [...cards]
 
@@ -69,6 +78,8 @@ const shuffleCards = (cards: string[]) => {
     return cardsCopy
 }
 
+
+//  create and append game cards
 const drawBoard = () => {
     const pickedCards = pickRandomCards(colors, state.gridLength / 2)
     const shuffledCards = shuffleCards([...pickedCards, ...pickedCards])
@@ -86,16 +97,22 @@ const drawBoard = () => {
     selectors.gameGrid.innerHTML = cards
 }
 
+
+//  moves counter
 const updateMoves = () => {
     state.totalMoves++
     selectors.moves.innerText = `${state.totalMoves}`
 }
 
+
+//  matches counter
 const updateMatches = () => {
     state.totalMatches++
     selectors.matches.innerText = `${state.totalMatches}`
 }
 
+
+//  check if last flipped cards match
 const checkForMatch = () => {
     if(state.cardOne.dataset.cardName === state.cardTwo.dataset.cardName) {
         // state.cardOne.removeEventListener('click', cardListener)
@@ -115,12 +132,16 @@ const checkForMatch = () => {
     updateMoves()
 }
 
+
+//  check if found all matches
 const checkWin = () => {
     const notFlipped = document.querySelectorAll('.js-game-card:not(.flipped)')
 
     return (!notFlipped.length)
 }
 
+
+//  card flip mechanism
 const flipCard = (card: HTMLDivElement | null) => {
     
     if(!card) return
@@ -152,24 +173,41 @@ const flipCard = (card: HTMLDivElement | null) => {
         checkForMatch()
 
         if(checkWin()) {
-            alert('Gratulācijas!!! Tu uzvarēji!')
+
+            setTimeout(() => alert('Gratulācijas!!! Tu uzvarēji!'), 800)
+            
             clearInterval(state.timer)
         }
     }
 }
 
-const initializeGame = () => {
+
+//  reset stats and state
+const resetStats = () => {
     state = {...initState}
 
-    document.querySelector('.js-game-btn').textContent = 'Reset'
+    selectors.matches.innerHTML = '0'
+    selectors.moves.innerHTML = '0'
+    selectors.timer.innerHTML = ''
 
     clearInterval(state.timer)
+}
+
+//  init game
+const initializeGame = () => {
+    resetStats()
+
+    document.querySelector('.js-game-btn').textContent = 'Reset'
 
     drawBoard()
 }
 
+
+//  game button listener for game initialization
 selectors.gameBtn.addEventListener('click', initializeGame)
 
+
+//  event listener for created cards
 document.addEventListener("click", function(e) {
     const target = <HTMLDivElement>e.target
     
